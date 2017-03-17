@@ -1,4 +1,4 @@
-# mysql-backup-s3
+# docker-mysql-backup-s3
 
 Backup MySQL to S3 (supports periodic backups & mutli files)
 
@@ -9,19 +9,19 @@ Fork from [mysql-backup-s3](https://github.com/schickling/dockerfiles/tree/maste
 ### Backup
 
 ```sh
-$ docker run -e S3_ACCESS_KEY_ID=key -e S3_SECRET_ACCESS_KEY=secret -e S3_BUCKET=my-bucket -e S3_PREFIX=backup -e MYSQL_USER=user -e MYSQL_PASSWORD=password -e MYSQL_HOST=localhost patw0929/mysql-backup-s3
+$ docker run -e S3_ACCESS_KEY_ID=key -e S3_SECRET_ACCESS_KEY=secret -e S3_BUCKET=my-bucket -e S3_PREFIX=backup -e MYSQL_USER=user -e MYSQL_PASSWORD=password -e MYSQL_HOST=localhost patw0929/docker-mysql-backup-s3
 ```
 
 If you need to backup other mysql container, please use link:
 
 ```sh
-$ docker run -e S3_ACCESS_KEY_ID=key -e S3_SECRET_ACCESS_KEY=secret -e S3_BUCKET=my-bucket -e S3_PREFIX=backup -e MYSQL_USER=user -e MYSQL_PASSWORD=password -e MYSQL_HOST=db --link db:db patw0929/mysql-backup-s3
+$ docker run -e S3_ACCESS_KEY_ID=key -e S3_SECRET_ACCESS_KEY=secret -e S3_BUCKET=my-bucket -e S3_PREFIX=backup -e MYSQL_USER=user -e MYSQL_PASSWORD=password -e MYSQL_HOST=db --link db:db patw0929/docker-mysql-backup-s3
 ```
 
 ### Restore
 
 ```sh
-$ docker run -e S3_ACCESS_KEY_ID=key -e S3_SECRET_ACCESS_KEY=secret -e S3_BUCKET=my-bucket -e S3_PREFIX=backup -e MYSQL_USER=user -e MYSQL_PASSWORD=password -e MYSQL_HOST=localhost RESTORE_DB_NAME=mydb RESTORE_FILENAME='2017-03-17T021827Z.dump.sql.gz' patw0929/mysql-backup-s3
+$ docker run -e S3_ACCESS_KEY_ID=key -e S3_SECRET_ACCESS_KEY=secret -e S3_BUCKET=my-bucket -e S3_PREFIX=backup -e MYSQL_USER=user -e MYSQL_PASSWORD=password -e MYSQL_HOST=localhost RESTORE_DB_NAME=mydb RESTORE_FILENAME='2017-03-17T021827Z.dump.sql.gz' patw0929/docker-mysql-backup-s3
 ```
 
 ## Environment variables
